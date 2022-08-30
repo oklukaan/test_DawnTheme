@@ -1,0 +1,118 @@
+
+
+<div class="container pb-4" style="border:1px solid black;">
+  
+<div class="p-2 mb-5 justify-content-center d-flex">
+    <h2 class="baslik">{{ section.settings.textHead }}</h2>
+  </div>
+<div class="d-flex flex-row justify-content-center">
+  <div class="p-2">
+     {% if section.settings.pro-link == null %}
+      {% assign hepsibos ="https://www.hepsiburada.com" %}
+       
+         <a href="{{ hepsibos }}">    
+        
+       {% else %}
+       <a href="{{ product.metafields.custom.linkhepsiburada }}">
+  {% endif %}
+ 
+    <img src="{{ section.settings.image | img_url:'master'}}" style="width:250px;height:120px"/>
+  </a>
+  
+</div>
+<div class="p-2" >
+  {% if section.settings.pro-link2 == null %}
+    {% assign amazon ="https://www.amazon.com" %}
+    <a href="{{ amazon }}">
+    {% else %}
+  <a href="{{ product.metafields.custom.linkamazon }}">
+    {% endif %}
+    <img src="{{ section.settings.image2 | img_url:'master'}}" style="width:250px;height:120px"/>
+  </a>
+  
+</div>
+      
+<div class="p-2" >
+  {% if section.settings.pro-link3 == null %}
+    {% assign trendyol ="https://trendyol.com" %}
+    <a href="{{ trendyol }}">
+    {% else %}
+  <a href="{{ product.metafields.custom.linktrendyol }}">
+    {% endif %}
+    <img src="{{ section.settings.image3 | img_url:'master'}}" style="width:250px;height:120px"/>
+  </a>
+  
+</div>
+
+      
+</div>
+  </div>
+ 
+{% schema %}
+  {
+    "name": "Section-product",
+    "class": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "textHead",
+        "label": "Text"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "t:sections.image-with-text.settings.image.label"
+      },
+      {
+        "type":"url",
+        "id":"pro-link",
+        "label":"please insert the link"
+        
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "t:sections.image-with-text.settings.image.label"
+      },
+      {
+        "type":"url",
+        "id":"pro-link2",
+        "label":"please insert the link"
+      },
+       {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "t:sections.image-with-text.settings.image.label"
+      },
+      {
+        "type":"url",
+        "id":"pro-link3",
+        "label":"please insert the link"
+      }
+    ],
+    "presets":[
+      {
+        "name":"Html Product Block"
+      }
+      
+    ]
+  }
+
+{% endschema %}
+
+{% stylesheet %}
+  @media screen and (max-width: 900px) {
+      .p-2 a img{
+        width:110px !important;
+        height:60px !important;
+      }
+      
+    }
+  
+{% endstylesheet %}
+
+{% javascript %}
+
+
+                  
+{% endjavascript %}

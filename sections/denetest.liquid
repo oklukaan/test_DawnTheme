@@ -1,0 +1,115 @@
+
+
+<h3 style="display:none;">{{ section.settings.include_margins }}</h3>
+
+
+{% for block in section.blocks %}
+  {% if section.settings.include_margins == true %}
+    
+    <div class="p-2 flex-fill" style="display:flex;max-width:{{ section.settings.verticalwidth }}%;" >
+      <img style="width:{{ block.settings.image_sizew }}%;height:{{ block.settings.image_sizeh }}%;"
+        src="{{ block.settings.image | img_url:'master' }}" class="Dene {{ forloop.index }}" id="denes"/>
+    </div>
+   
+    {% else %}
+  <img src="{{ block.settings.image | img_url:'master' }}" class="Deneme" style="display:none;"/>
+
+  {% endif %}
+
+  
+  {% endfor %}
+
+<style>
+  .deneme{
+    display:none;
+  }
+  .rte img{
+    max-width:%20;
+  }
+  #shopify-section-denetest{
+    display:flex;
+  }
+</style>
+{% schema %}
+  {
+    
+  "name": "Teset",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "Divin Görünmesini istemiyorsanız seçiniz"
+      
+    },
+    {
+      "type":"select",
+      "id":"verticalwidth",
+      "label":"Div width Option",
+      "options":[
+        {
+          "value": "50",
+          "label": "%100"
+          
+        },
+        {
+          "value": "20",
+          "label": "%60"
+        },
+        {
+          "value": "10",
+          "label": "%20"
+        }
+      ]
+      
+    }
+  ],
+    "blocks":[
+      {
+        "type":"image",
+        "name":"image block",
+        "settings":[
+          {
+            "type":"image_picker",
+            "label":"your image",
+            "id":"image"
+          },
+          {
+            "type": "range",
+            "id": "image_sizew",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "İmage Width",
+            "default": 60
+          },
+          {
+            "type": "range",
+            "id": "image_sizeh",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "İmage Width",
+            "default": 60
+          }
+        ]
+      }
+    ],
+  "presets": [
+    {
+      "name": "Div"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+  
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

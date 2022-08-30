@@ -1,0 +1,8 @@
+{% assign available_products = collection.products | where: 'available' %}
+
+Available products:
+
+{% for product in available_products -%}
+  - {{ product.title }}
+  <img src="{{ product.images }}">
+{%- endfor %}
